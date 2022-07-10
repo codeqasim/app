@@ -12,18 +12,16 @@
 
     <div class="d-flex gap-2 align-items-center">
 
-        <span href="./contacts" class="chip-set mt-2 text-decoration-none">
+        <div href="./contacts" class="height38 chip-set text-decoration-none dn reset_search">
             <div class="chip">
                 Reset Search
                 <i class="chip-close-icon material-icons">cancel</i>
             </div>
-        </span>
+        </div>
 
         <!-- <mwc-textfield label="" placeholder="Search" outlined icon="search" style="height:42px;margin-top: 7px;background:#fff"></mwc-textfield> -->
         <a href="./contacts-add" class="btn btn-outline-primary btn-action" type="button" data-bs-toggle="modal" data-bs-target="#SearchModal">Search</a>
         <a href="./contacts-add" class="btn btn-primary btn-action" type="button">Add New</a>
-
-
 
     </div>
 
@@ -68,6 +66,18 @@
 
 <div class="row g-2">
 
+<!-- NO RESULTS FOUND MESSAGE -->
+<div class="notfound text-center dn" style="height:80vh">
+<img class="mt-5" src="https://static.hsappstatic.net/ui-images/static-2.419/optimized/all-conversations-complete.svg" alt="">
+<div class="text-center mt-3">
+    <p class=""><small>No results found</small></p>
+    <!-- <button class="btn btn-outline-primary text-center reset_search">
+        Back
+    </button> -->
+</div>
+
+</div>
+
 <div class="col-12 col-md-3 text-decoration-none" ng-repeat="i in items">
 
         <div class="card card-raised border-start border-primary border-4 ">
@@ -94,21 +104,5 @@
         </div>
 
 </div>
-
-<script>
-
-if($('input[name="checkBoxName"]').is(':checked'))
-{
-  // checked
-  alert('checked');
-}else
-{
- // unchecked
-}
-
-</script>
-
-
-
 
 </div>

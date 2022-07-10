@@ -16,6 +16,10 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                     var data = $.param({ email: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
+
+                        // NOT FOUND MESSAGE
+                        if (res.data.data == null) { $('.notfound').fadeIn(500) }
+
                         console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
@@ -26,6 +30,10 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                     var data = $.param({ mobile: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
+
+                        // NOT FOUND MESSAGE
+                        if (res.data.data == null) { $('.notfound').fadeIn(500) }
+
                         console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
@@ -36,6 +44,10 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                     var data = $.param({ first_name: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
+
+                        // NOT FOUND MESSAGE
+                        if (res.data.data == null) { $('.notfound').fadeIn(500) }
+
                         console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
@@ -46,6 +58,10 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                     var data = $.param({ last_name: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
+
+                        // NOT FOUND MESSAGE
+                        if (res.data.data == null) { $('.notfound').fadeIn(500) }
+
                         console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
@@ -56,6 +72,10 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                     var data = $.param({ country_code: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
+
+                        // NOT FOUND MESSAGE
+                        if (res.data.data == null) { $('.notfound').fadeIn(500) }
+
                         console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
@@ -64,6 +84,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
 
             }
 
+           $('.reset_search').fadeIn(400);
         })
 
         var data = $.param({
@@ -73,7 +94,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
         $http.post(endpoint+"contacts", data, ContentConfig)
         .then(
        function(res){
-           
+
          // SUCCESS CALLBACK
         //  console.log(res.data.data)
          $scope.items = res.data.data;
@@ -83,6 +104,10 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
          // FAILURE CALLBACK
        }
     );
+
+    $('.reset_search').on('click', function(event){
+      redirect('./contacts');
+    })
 
   }])
 
