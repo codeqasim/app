@@ -254,6 +254,25 @@ $router->post('user_profile', function() {
         echo json_encode($respose);
 });
 
+// ======================== DELETE USER
+$router->post('delete-user', function() {
+
+    include "db.php";
+    $data = $database->delete('users', [
+        "AND" => [
+        'user_id' => $_POST['user_id'],
+        ]
+   ]);
+
+   if ($data->rowCount() == 1) {
+    $respose = array ( "status"=>"true", "message"=>"user deleted.", "data"=> $data->rowCount() );
+   } else {
+    $respose = array ( "status"=>"false", "message"=>"user not deleted.", "data"=> $data->rowCount() );
+   }
+   echo json_encode($respose);
+
+});
+
 // ======================== CONTACTS
 $router->post('contacts', function() {
 
