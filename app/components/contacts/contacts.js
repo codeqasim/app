@@ -20,7 +20,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                         // NOT FOUND MESSAGE
                         if (res.data.data == null) { $('.notfound').fadeIn(500) }
 
-                        console.log(res.data.data)
+                        // console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
                    });
@@ -34,7 +34,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                         // NOT FOUND MESSAGE
                         if (res.data.data == null) { $('.notfound').fadeIn(500) }
 
-                        console.log(res.data.data)
+                        // console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
                    });
@@ -48,7 +48,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                         // NOT FOUND MESSAGE
                         if (res.data.data == null) { $('.notfound').fadeIn(500) }
 
-                        console.log(res.data.data)
+                        // console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
                    });
@@ -62,7 +62,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                         // NOT FOUND MESSAGE
                         if (res.data.data == null) { $('.notfound').fadeIn(500) }
 
-                        console.log(res.data.data)
+                        // console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
                    });
@@ -76,7 +76,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                         // NOT FOUND MESSAGE
                         if (res.data.data == null) { $('.notfound').fadeIn(500) }
 
-                        console.log(res.data.data)
+                        // console.log(res.data.data)
                         $scope.items = res.data.data;
                         $('#SearchModal').modal('hide');
                    });
@@ -98,6 +98,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
          // SUCCESS CALLBACK
         //  console.log(res.data.data)
          $scope.items = res.data.data;
+         if (res.data.data == null) { $('.notfound').fadeIn(500) }
 
        },
        function(res){
@@ -122,11 +123,15 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
         console.log(res.data.data)
         $scope.items = res.data.data;
 
-        $('.first_name').val(res.data.data[0].first_name)
-        $('.last_name').val(res.data.data[0].last_name)
-        $('.email').val(res.data.data[0].email)
-        $('.mobile').val(res.data.data[0].mobile)
-        $('.country_code').val(res.data.data[0].country_code)
+        if (res.data.data == null) { } else {
+
+            $('.first_name').val(res.data.data[0].first_name)
+            $('.last_name').val(res.data.data[0].last_name)
+            $('.email').val(res.data.data[0].email)
+            $('.mobile').val(res.data.data[0].mobile)
+            $('.country_code').val(res.data.data[0].country_code)
+
+        }
 
     });
 
