@@ -110,6 +110,29 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
       redirect('./contacts');
     })
 
+
+    $scope.selectInfo=function(id){
+        // alert(id);
+
+        let text = "Are you sure you want to delete?";
+
+        if (confirm(text) == true) {
+
+            var data = $.param({ user_id: id,  });
+            $http.post(endpoint+"delete-user", data, ContentConfig)
+            .then(
+            function(res){
+            console.log(res.data)
+
+            $('#item_'+id).fadeOut(500);
+            })
+
+          } else {
+            // alert('something wrong hogaya!')
+          }
+
+        }
+
   }])
 
  app.controller('ContactController', ['$http','$scope','$routeParams','$location',function ($http,$scope,$routeParams) {
