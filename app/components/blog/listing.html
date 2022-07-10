@@ -1,0 +1,69 @@
+<div ng-controller="blog" class="container">
+    <div class="row">
+          
+    <div class="col-md-8">
+        
+        <div class="card p0 mb20" ng-repeat="blog in blogs" >
+            <div class="card-header header-before">
+            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+            <div>
+            <h3><strong>{{ blog.title }}</strong></h3>
+            <h4>Tomorrow zulfein conversation</h4>
+            </div>
+            </div>
+            <div class="card-ripple-container">
+                <div class="card-header">
+                    <img src="{{blog.thumbnail}}" class="card-img">
+                </div>
+                <div class="card-content">
+                    <p class="card-meta-text">{{blog.description | limitTo: 250 }}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-start">
+                    <button class="text ripple">Read More</button>
+                </div>
+                <div class="card-footer-end">
+                    <button class="button icon ripple"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></button>
+                    <dropdown class="button icon"></dropdown>
+                </div>
+            </div>
+        </div>
+            
+        <h1 class="load-more" ng-show="showLoadmore" ng-click='getPosts()'>{{ buttonText }}</h1>
+            <input type="hidden" id="row" ng-model='row'>
+    </div>
+    
+    <div class="col-md-4">
+
+        <div class="card p0 mb10" ng-repeat="blog in blogs" >
+            <div class="card-header header-before">
+            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60">
+            <div>
+            <h3><strong>{{blog.title | limitTo: 30}}</strong></h3>
+            <h4>Tomorrow zulfein conversation</h4>
+            </div>
+            </div>
+            <div class="card-ripple-container">
+                <div class="card-header">
+                    <img src="{{blog.thumbnail}}" class="card-img">
+                </div>
+                <div class="card-content">
+                    <p class="card-meta-text">{{blog.description | limitTo: 250 }}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-start">
+                    <button class="text ripple">Read More</button>
+                </div>
+                <div class="card-footer-end">
+                    <button class="button icon ripple"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg></button>
+                    <dropdown class="button icon"></dropdown>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    </div>
+</div>
