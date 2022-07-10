@@ -18,7 +18,7 @@ $.ajax({
     'text_body': "Your account is ready and rememeber your " + password
     }),
 })}
-// ======================================== MAILE FUNCTION
+// ======================================== MALE FUNCTION
 
 // FUNCTIONS
 function get(item){
@@ -220,10 +220,10 @@ $locationProvider.html5Mode(true);
     };
 })
 
-.directive('dash_menu', function() {
+.directive('notfound', function() {
   return {
       restrict: 'E',
-  templateUrl: './app/components/partcials/dash_menu.html',
+  templateUrl: './app/components/global/notfound.html',
   };
 })
 

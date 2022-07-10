@@ -59,7 +59,11 @@ $router->post('signup', function() {
 
         // EMAIL CHECK
         $exist_mail = $database->select('users', [ 'email', ], [ 'email' => $_POST['email'], ]);
-        if (isset($exist_mail[0]['email'])) { echo "email already exist"; die; }
+        if (isset($exist_mail[0]['email'])) {
+        $respose = array ( "status"=>"false", "message"=>"email already exist please use new email", "data"=> "" );
+        echo json_encode($respose);
+        die;
+        }
 
         if(isset($_POST['user_id'])) { $user_id = $_POST['user_id']; } else { $user_id = ""; }
         if(isset($_POST['password'])) { $password = $_POST['password']; } else { $password = 00000000; }
