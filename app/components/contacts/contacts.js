@@ -1,6 +1,8 @@
 // CONTACTS CONTROLLER
 app.controller('ContactsController', ['$http','$scope','$routeParams','$location',function ($http,$scope) {
 
+        let user_id = get('user_id');
+
         // REDIRECT BACK TO CONTACTS PAGE
         $(".search").on('click', function(event){
             var searchBy = ($('.search_by').val())
@@ -11,7 +13,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
 
                 // SEARCH BY EMAIL
                 if (searchBy === 'email') {
-                    var data = $.param({ email: searchText });
+                    var data = $.param({ email: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
                         console.log(res.data.data)
@@ -21,7 +23,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                 }
 
                 if (searchBy === 'mobile') {
-                    var data = $.param({ mobile: searchText });
+                    var data = $.param({ mobile: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
                         console.log(res.data.data)
@@ -31,7 +33,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                 }
 
                 if (searchBy === 'first_name') {
-                    var data = $.param({ first_name: searchText });
+                    var data = $.param({ first_name: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
                         console.log(res.data.data)
@@ -41,7 +43,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                 }
 
                 if (searchBy === 'last_name') {
-                    var data = $.param({ last_name: searchText });
+                    var data = $.param({ last_name: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
                         console.log(res.data.data)
@@ -51,7 +53,7 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                 }
 
                 if (searchBy === 'country') {
-                    var data = $.param({ country_code: searchText });
+                    var data = $.param({ country_code: searchText, owner_id: user_id });
                     $http.post(endpoint+"contacts", data, ContentConfig).then(
                         function(res){
                         console.log(res.data.data)
@@ -64,8 +66,6 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
 
         })
 
-        let user_id = sessionStorage.getItem('user_id');
-
         var data = $.param({
             owner_id: user_id
         });
@@ -73,10 +73,9 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
         $http.post(endpoint+"contacts", data, ContentConfig)
         .then(
        function(res){
+           
          // SUCCESS CALLBACK
-
-         console.log(res.data.data)
-
+        //  console.log(res.data.data)
          $scope.items = res.data.data;
 
        },

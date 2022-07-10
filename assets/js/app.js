@@ -22,10 +22,10 @@ $.ajax({
 
 // FUNCTIONS
 function get(item){
-return window.localStorage.getItem(item);
+return window.sessionStorage.getItem(item);
 }
 function set(item, value){
-window.localStorage.setItem(item, value);
+window.sessionStorage.setItem(item, value);
 }
 
 // REDIRECT

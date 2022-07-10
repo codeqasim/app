@@ -312,6 +312,7 @@ $router->post('contacts', function() {
 
     if (isset($_POST['email'])) {
         $email = $_POST['email'];
+        $owner_id = $_POST['owner_id'];
 
         $data = $database->select('users', [
             'id',
@@ -324,11 +325,13 @@ $router->post('contacts', function() {
             'user_status'
         ], [
             'email' => $email,
+            'owner_id' => $owner_id,
        ]);
     }
 
     if (isset($_POST['first_name'])) {
         $first_name = $_POST['first_name'];
+        $owner_id = $_POST['owner_id'];
 
         $data = $database->select('users', [
             'id',
@@ -341,11 +344,13 @@ $router->post('contacts', function() {
             'user_status'
         ], [
             'first_name' => $first_name,
+            'owner_id' => $owner_id,
        ]);
     }
 
     if (isset($_POST['last_name'])) {
         $last_name = $_POST['last_name'];
+        $owner_id = $_POST['owner_id'];
 
         $data = $database->select('users', [
             'id',
@@ -358,11 +363,13 @@ $router->post('contacts', function() {
             'user_status'
         ], [
             'last_name' => $last_name,
+            'owner_id' => $owner_id,
        ]);
     }
 
     if (isset($_POST['mobile'])) {
         $mobile = $_POST['mobile'];
+        $owner_id = $_POST['owner_id'];
 
         $data = $database->select('users', [
             'id',
@@ -375,11 +382,13 @@ $router->post('contacts', function() {
             'user_status'
         ], [
             'mobile' => $mobile,
+            'owner_id' => $owner_id,
        ]);
     }
 
     if (isset($_POST['country_code'])) {
         $country_code = $_POST['country_code'];
+        $owner_id = $_POST['owner_id'];
 
         $data = $database->select('users', [
             'id',
@@ -392,6 +401,7 @@ $router->post('contacts', function() {
             'user_status'
         ], [
             'country_code' => $country_code,
+            'owner_id' => $owner_id,
        ]);
     }
 
