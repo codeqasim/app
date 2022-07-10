@@ -145,8 +145,8 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
                                 email: email,
                                 country_code: country_code,
                                 mobile: mobile,
-                                owner_id: user_id
-
+                                owner_id: user_id,
+                                user_id: currentId,
                             });
 
                             // CONDITION TO CHECK IF ID IS PRESENT OR NOT

@@ -111,7 +111,7 @@ when('/signup-success', {
       }
   }).
 
-// CONTRACTS PAGE
+// CONTACTS PAGE
 when('/contacts', {
   templateUrl: './app/components/contacts/contacts.html',
    data: {
@@ -122,7 +122,7 @@ when('/contacts', {
       }
   }).
 
-// CONTACT EDIT PAGE
+// CONTACT Add PAGE
 when('/contacts-add', {
 templateUrl: './app/components/contacts/contact.html',
 // controller: 'EditContactController',
@@ -135,7 +135,7 @@ templateUrl: './app/components/contacts/contact.html',
 }).
 
 
-// CONTACT ADD PAGE
+// CONTACT EDIT PAGE
 when('/contacts/:id', {
 templateUrl: './app/components/contacts/contact.html',
   data: {

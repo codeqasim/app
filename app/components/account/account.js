@@ -104,7 +104,6 @@ app.controller('LoginController', ['$http','$scope',function ($http,$scope) {
   }]) // SIGNUP CONTROLLER
 
 
-
 // RESET PASSWORD CONTROLLER
 app.controller('ResetPasswordController', ['$http','$scope',function ($http,$scope) {
 

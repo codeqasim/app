@@ -156,10 +156,10 @@ $router->post('user_update', function() {
     if(isset($_POST['email']) && trim($_POST['email']) !== "") {} else { echo "email - param or value missing "; die; }
 
     // CHECK IF EMAIL EXIST
-    $sql = "SELECT * FROM users WHERE email = '".$_POST['email']."'";
+    $sql = "SELECT * FROM users WHERE user_id = '".$_POST['user_id']."'";
     $res=mysqli_num_rows(mysqli_query($mysqli, $sql));
     if($res == 0) {
-    $respose = array ( "status"=>"false", "message"=>"no account found with this email.", "data"=> '' );
+    $respose = array ( "status"=>"false", "message"=>"no account found with this user id.", "data"=> '' );
     echo json_encode($respose);
     die;
     }
@@ -177,9 +177,10 @@ $router->post('user_update', function() {
         $query = "UPDATE `users` SET
         `first_name` = '".$_POST['first_name']."',
         `last_name` = '".$_POST['last_name']."',
+        `email` = '".$_POST['email']."',
         `mobile` = '".$_POST['mobile']."',
         `country_code` = '".$_POST['country_code']."'
-        WHERE `users`.`email` = '".$_POST['email']."';";
+        WHERE `users`.`user_id` = '".$_POST['user_id']."';";
 
         $result = mysqli_query($mysqli, $query);
 
