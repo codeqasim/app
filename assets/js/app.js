@@ -100,13 +100,24 @@ when('/signup', {
       }
   }).
 
-  // SIGNUP SUCCESS PAGE
+// SIGNUP SUCCESS PAGE
 when('/signup-success', {
-  templateUrl: './app/components/account/signup_success.html',
-   data: {
+templateUrl: './app/components/account/signup_success.html',
+  data: {
+      meta: {
+        'title': 'Signup Success',
+        'description': 'Signup Success'
+      }
+    }
+}).
+
+// PROFILE PAGE
+when('/profile', {
+  templateUrl: './app/components/account/profile.html',
+    data: {
         meta: {
-          'title': 'Signup Success',
-          'description': 'Signup Success'
+          'title': 'Profile',
+          'description': 'Profile Page'
         }
       }
   }).
@@ -227,6 +238,12 @@ $locationProvider.html5Mode(true);
   };
 })
 
+.directive('services', function() {
+  return {
+      restrict: 'E',
+  templateUrl: './app/components/global/services.html',
+  };
+})
 
 // HEADER
 app.controller('header', ['$http','$scope',function ($http,$scope) {

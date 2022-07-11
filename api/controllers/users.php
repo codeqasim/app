@@ -157,7 +157,7 @@ $router->post('user_update', function() {
     include "db.php";
 
     // VALIDATION PARAMS
-    if(isset($_POST['email']) && trim($_POST['email']) !== "") {} else { echo "email - param or value missing "; die; }
+    // if(isset($_POST['email']) && trim($_POST['email']) !== "") {} else { echo "email - param or value missing "; die; }
 
     // CHECK IF EMAIL EXIST
     $sql = "SELECT * FROM users WHERE user_id = '".$_POST['user_id']."'";
@@ -189,9 +189,9 @@ $router->post('user_update', function() {
         $result = mysqli_query($mysqli, $query);
 
         if ($result == false ) {
-            $respose = array ( "status"=>"false", "message"=>"Someone went wrong please check", "data"=> null );
+            $respose = array ( "status"=>"false", "message"=>"Something went wrong please check", "data"=> null );
         } else {
-            $respose = array ( "status"=>"true", "message"=>"account updated successfully.", "data"=> $result );
+            $respose = array ( "status"=>"true", "message"=>"account updated successfully.", "data"=> "" );
         }
         echo json_encode($respose);
         }
@@ -248,12 +248,16 @@ $router->post('login-reset', function() {
 $router->post('user_profile', function() {
 
     include "db.php";
-    $user_info = $mysqli->query('SELECT * FROM users WHERE id = "'.$_POST['user_id'].'"')->fetch_object();
-        if ($mysqli == false ) {
-            $respose = array ( "status"=>"false", "message"=>"email exist please try with new credentials.", "data"=> $user_info );
-            die;
+
+    $data = $database->select('users', "*", [
+        'user_id' => $_POST['user_id'],
+   ]);
+
+   if (!empty($data)) {
+    $respose = array ( "status"=>"true", "message"=>"user details found.", "data"=> $data );
+
         } else {
-            $respose = array ( "status"=>"true", "message"=>"account found successfully.", "data"=> $user_info );
+            $respose = array ( "status"=>"true", "message"=>"account found successfully.", "data"=> '' );
         }
         echo json_encode($respose);
 });

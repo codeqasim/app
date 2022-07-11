@@ -140,3 +140,64 @@ app.controller('ResetPasswordController', ['$http','$scope',function ($http,$sco
     });
 
   }])
+
+
+  // RESET PASSWORD CONTROLLER
+app.controller('ProfileController', ['$http','$scope',function ($http,$scope) {
+
+      let user_id = get('user_id');
+
+      $.ajax({
+          url: endpoint+"user_profile",
+          type: 'POST',
+          dataType: "json",
+          data: {
+            user_id: user_id,
+          },
+        }).done(function(res) {
+          // console.log(res.data);
+          if(res.status == 'true'){
+
+            $('.first_name').val(res.data[0].first_name)
+            $('.last_name').val(res.data[0].last_name)
+            $('.email').val(res.data[0].email)
+            $('.mobile').val(res.data[0].mobile)
+            $('.country_code').val(res.data[0].country_code)
+
+          }
+
+      });
+
+      $("#update").on('click', function(event){
+        event.preventDefault();
+
+        // GET FORM PARAMS AND VALUES
+        var first_name = $('.first_name').val();
+        var last_name = $('.last_name').val();
+        var email = $('.email').val();
+        // var password = $('.password').val();
+        var country = $('.country_code').val();
+        var mobile = $('.mobile').val();
+
+        $.ajax({
+          url: endpoint+"user_update",
+          type: 'POST',
+          dataType: "json",
+          data: {
+            user_id: user_id,
+            first_name: first_name,
+            last_name: last_name,
+            email: email,
+            // password: password,
+            country_code: country,
+            mobile: mobile
+          },
+        }).done(function(res) {
+          console.log(res);
+
+          redirect('./profile');
+        }).fail(function(err) { throw err; });
+
+      })
+
+}])
