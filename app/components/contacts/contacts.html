@@ -1,5 +1,5 @@
 
-<div class="container-fluid mt-1" ng-controller="ContactsController">
+<div class="container mt-1" ng-controller="ContactsController">
 
     <services></services>
 
@@ -73,11 +73,61 @@
 <!-- NOT FOUND -->
 <notfound class="notfound dn"></notfound>
 
-<div class="col-12 col-md-3 text-decoration-none" ng-repeat="i in items" id="item_{{i.user_id}}">
+
+
+
+
+<div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+
+	<div class="dataTable-container">
+		<table id="datatablesSimple" class="dataTable-table"style="background:white">
+			<thead>
+				<tr>
+					<th data-sortable="" style="width: 5.5471%;"><a href="#" class="dataTable-sorter">No</a></th>
+					<th data-sortable="" style="width: 20.5471%;"><a href="#" class="dataTable-sorter">Name</a></th>
+					<th data-sortable="" style="width: 15.205%;"><a href="#" class="dataTable-sorter">Email</a></th>
+					<th data-sortable="" style="width: 25.3405%;"><a href="#" class="dataTable-sorter">Mobile</a></th>
+					<th data-sortable="" style="width: 10.2727%;"><a href="#" class="dataTable-sorter">Country Code</a></th>
+					<th data-sortable="" style="width: 18.2727%;"><a href="#" class="dataTable-sorter">Action</a></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="i in items">
+					<td>{{$index + 1}}</td>
+					<td>{{i.first_name}}  {{i.last_name}}</td>
+					<td>{{i.email}}</td>
+					<td>{{i.mobile}}</td>
+					<td>{{i.country_code}}</td>
+					<td class="d-flex justify-content-center gap-3 btn-table-action">
+
+                        <a href="./contacts/{{i.user_id}}" class="btn btn-success btn-sm gap-2 d-flex align-items-center p-2 pe-4 justify-content-center btn-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                            Edit
+                        </a>
+
+                        <button ng-click="selectInfo(i.user_id)" class="btn btn-danger btn-sm gap-2 d-flex align-items-center p-1 pe-2 justify-content-center btn-block">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                            Del
+                        </button>
+
+                    </td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+
+
+
+
+
+<!-- <div class="col-12 col-md-3 text-decoration-none" ng-repeat="i in items" id="item_{{i.user_id}}">
 
         <div class="card card-raised border-start border-primary border-4 ">
-
-         <!-- <input ng-click="selectInfo(i.user_id)" type="checkbox" name="{{i.user_id}}" value="select[]" id="va" style="position: absolute; right: 12px; margin-top: 16px;"> -->
 
             <button ng-click="selectInfo(i.user_id)" class="btn btn-danger btn-sm" style="position: absolute; right: 12px; margin-top: 16px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
@@ -102,7 +152,7 @@
         </div>
         </div>
 
-</div>
+</div> -->
 
 </div>
 
