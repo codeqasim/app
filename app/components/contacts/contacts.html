@@ -70,29 +70,49 @@
 
 <div class="row g-2">
 
-<!-- NOT FOUND -->
-<notfound class="notfound dn"></notfound>
-
-<div class="fixed-columns bg-white p-3">
+<div class="fixed-columns bg-white p-3 contacts dn">
 
 	<div class="">
-		<table id="" class="table table-striped table-hover">
-			<thead>
+		<table id="table" class="table table-striped table-hover">
+			<thead class="">
 				<tr>
 					<th>No</th>
+                    <th>
+                        <div class="form-check pt-1">
+                            <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDefault"></label>
+                        </div>
+                    </th>
 					<th>Status</th>
+					<th>Name</th>
 					<th>Email</th>
 					<th>Mobile</th>
 					<th>Country Code</th>
 					<th>Action</th>
-					<th>No</th>
 				</tr>
 			</thead>
 			<tbody>
 
-				<tr ng-repeat="i in items">
+				<tr ng-repeat="i in items" class="item_{{i.user_id}}">
 					<td>{{$index + 1}}</td>
-					<td></td>
+                    <th>
+                        <div class="form-check">
+                            <input class="form-check-input" id="flexCheckDefault" type="checkbox" value="">
+                            <label class="form-check-label" for="flexCheckDefault"></label>
+                        </div>
+                    </th>
+					<td>
+
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="checked" type="checkbox" checked>
+                            <label class="form-check-label" for="checked"></label>
+                        </div>
+
+                        <script> if($("#checked").is(':checked')) console.log("Checked"); else console.log("Not Checked");
+
+                        </script>
+
+                    </td>
 					<td>{{i.first_name}}  {{i.last_name}}</td>
 					<td>{{i.email}}</td>
 					<td>{{i.mobile}}</td>
@@ -100,7 +120,7 @@
 					<td class="d-flex justify-content-center gap-3 btn-table-action">
 
                         <a href="./contacts/{{i.user_id}}" class="btn btn-dark btn-sm gap-2 d-flex align-items-center p-2 pe-4 justify-content-center btn-block">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                             Edit
                         </a>
 
@@ -117,6 +137,9 @@
 	</div>
 
 </div>
+
+<!-- NOT FOUND -->
+<notfound class="notfound dn"></notfound>
 
 
 <!-- <div class="col-12 col-md-3 text-decoration-none" ng-repeat="i in items" id="item_{{i.user_id}}">

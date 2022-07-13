@@ -3,6 +3,20 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
 
         let user_id = get('user_id');
 
+        $('head').append("<script src='https://cdn.jsdelivr.net/npm/simple-datatables@latest' crossorigin='anonymous'></script>");
+        $('head').append("<link href='https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' rel='stylesheet' />");
+
+        setTimeout(function() {
+
+            const dataTable = new simpleDatatables.DataTable("#table", {
+                // searchable: true,
+                // fixedHeight: true,
+
+            })
+
+        }, 300);
+
+
         // REDIRECT BACK TO CONTACTS PAGE
         $(".search").on('click', function(event){
             var searchBy = ($('.search_by').val())
@@ -98,7 +112,12 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
          // SUCCESS CALLBACK
         //  console.log(res.data.data)
          $scope.items = res.data.data;
-         if (res.data.data == null) { $('.notfound').fadeIn(500) }
+         if (res.data.data == null) {
+            $('.contacts').hide()
+            $('.notfound').fadeIn(500)
+        } else {
+            $('.contacts').fadeIn(500)
+        }
 
        },
        function(res){
@@ -124,7 +143,9 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
             function(res){
             console.log(res.data)
 
-            $('#item_'+id).fadeOut(500);
+            $('.item_'+id).fadeOut(500);
+            redirect('./contacts');
+
             })
 
           } else {
