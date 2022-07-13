@@ -79,9 +79,9 @@
 /* SCROLLER */
 ::selection                     { background: #a8d1ff;                                      }
 ::-moz-selection                { background: #a8d1ff;                                      }
-::-webkit-scrollbar             { width: 10px;                                                }
-::-webkit-scrollbar-track       { background-color: #eaeaea; border-left: 1px solid #ccc  }
-::-webkit-scrollbar-thumb       { background-color: #888888;                                }
+::-webkit-scrollbar             { width: 6px;                                                 }
+::-webkit-scrollbar-track       { background-color: #1e2640;                                }
+::-webkit-scrollbar-thumb       { background-color: #ffffff;                                }
 ::-webkit-scrollbar-thumb:hover { background-color: #636363;                                }
 
  body { opacity: 1; transition: 0.5s opacity; }
@@ -26808,3 +26808,16 @@ body { background-color: rgb(239, 239, 244); }
 
 .btn-table-action .btn { height: 25px }
 .btn-table-action { padding: 10px !important;  }
+
+.drawer .drawer-menu, .drawer { background-color: #1e2640 !important}
+.drawer-light .drawer-menu .nav-link .nav-link-icon { color: #ccc; }
+.drawer-light .drawer-menu .nav-link { color: #ccc; }
+.drawer-light .drawer-menu .nav-link:hover, .drawer-light .drawer-menu .nav-link:hover .nav-link-icon { color : #fff }
+.drawer-light .drawer-menu .drawer-menu-heading { color : #fff }
+.drawer-light .drawer-menu .drawer-menu-divider { border-color: rgb(224 224 224 / 11%); }
+.drawer-light .drawer-menu .nav-link.active { color: #fff; font-weight: bold; }
+.drawer-light .drawer-footer { background-color: #1e2640; }
+.drawer-light .drawer-footer { background-color: #1e2640; color: #fff; border-top: solid 1px rgb(255 255 255 / 8%); }
+
+.table thead { background : #1e2640 }
+.table thead th { color : #fff }

@@ -245,6 +245,13 @@ $locationProvider.html5Mode(true);
   };
 })
 
+.directive('drawer', function() {
+  return {
+      restrict: 'E',
+  templateUrl: './app/components/global/drawer.html',
+  };
+})
+
 // HEADER
 app.controller('header', ['$http','$scope',function ($http,$scope) {
 
