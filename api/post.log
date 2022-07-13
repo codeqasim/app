@@ -1,10 +1,5 @@
 Array
 (
-    [first_name] => nasir
-    [last_name] => habib
-    [email] => nasir@habib.com
-    [country_code] => 92
-    [mobile] => 0534655
-    [owner_id] => 20220711123516957680876
-    [user_id] => 
+    [email] => compoxition@gmail.com
+    [password] => me4sehriesh
 )
