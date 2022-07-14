@@ -1,6 +1,8 @@
 var endpoint = "http://localhost/app/api/";
 var app = angular.module('app', ['ngRoute','ngMeta','ngAnimate']);
 
+let qas = "sim";
+
 // ======================================== MAILE FUNCTION
 function mailer(email,password) {
 
@@ -179,6 +181,28 @@ when('/dashboard', {
         }
       }
   }).
+
+// PRODUCTS PAGE
+when('/products', {
+templateUrl: './app/components/products/products.html',
+  data: {
+      meta: {
+        'title': 'Products',
+        'description': 'Products'
+      }
+    }
+}).
+
+// PRODUCTS ADD PAGE
+when('/products-add', {
+templateUrl: './app/components/products/products-add.html',
+  data: {
+      meta: {
+        'title': 'Add Product',
+        'description': 'Add Product'
+      }
+    }
+}).
 
 // Logout PAGE
 when('/logout', {

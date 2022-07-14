@@ -1,0 +1,199 @@
+<div class="row" ng-controller="ProductsAddController" data-bs-spy="scroll" data-bs-target="#list-example">
+
+    <script> var scrollSpy = new bootstrap.ScrollSpy(document.body, { target: '#list-example' }); </script>
+
+    <div class="col-lg-9">
+         <section class="mb-3 mt-3" id="productinformation">
+            <div class="card card-raised">
+                <div class="card-header card-collapsible"><div class="my-1">Product Information</div></div>
+                <div class="card-body">
+
+                <mwc-textfield class="w-100 mb-4" label="Product Name" outlined="" icontrailing="" placeholder="Enter the complete product name"></mwc-textfield>
+
+                <mwc-select outlined label="Product Category" class="mb-4 product_category w-100">
+                    <mwc-list-item data-countryCode="" value=""></mwc-list-item>
+                </mwc-select>
+
+                <mwc-textarea class="w-100" label="Product Description" outlined="" icontrailing="" placeholder="Enter the complete product description"></mwc-textarea>
+            </div>
+            </div>
+        </section>
+
+        <section class="mb-3" id="productprices">
+            <div class="card card-raised">
+                <div class="card-header card-collapsible"><div class="my-1">Product Prices</div></div>
+                <div class="card-body">
+
+                <div class="row">
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="Price" outlined="" icontrailing="" placeholder="Enter the product price value"></mwc-textfield>
+                    </div>
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="Discount Price" outlined="" icontrailing="" placeholder="Enter the product discount price value"></mwc-textfield>
+                    </div>
+
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="Product Unit" outlined="" icontrailing="" placeholder="Enter the product unit value" value="1"></mwc-textfield>
+                    </div>
+                    <div class="col-6">
+                        <mwc-select outlined label="Product Unit Type" class="mb-4 product_category w-100">
+                            <mwc-list-item data-countryCode="km" value="km">KM</mwc-list-item>
+                            <mwc-list-item data-countryCode="piece" value="piece" selected>Piece</mwc-list-item>
+                            <mwc-list-item data-countryCode="gm" value="gm" >GM</mwc-list-item>
+                            <mwc-list-item data-countryCode="ml" value="ml" >ML</mwc-list-item>
+                            <mwc-list-item data-countryCode="litre" value="litre" >Litre</mwc-list-item>
+                            <mwc-list-item data-countryCode="mm" value="mm" >MM</mwc-list-item>
+                            <mwc-list-item data-countryCode="ft" value="ft" >FT</mwc-list-item>
+                            <mwc-list-item data-countryCode="meter" value="meter" >Meter</mwc-list-item>
+                            <mwc-list-item data-countryCode="sqft" value="sqft" >Sq. Ft</mwc-list-item>
+                            <mwc-list-item data-countryCode="sqmeter" value="sqmeter" >Sq. Meter</mwc-list-item>
+                            <mwc-list-item data-countryCode="set" value="set" >Set</mwc-list-item>
+                            <mwc-list-item data-countryCode="minute" value="minute" >Minute</mwc-list-item>
+                            <mwc-list-item data-countryCode="Day" value="Day" >Day</mwc-list-item>
+                            <mwc-list-item data-countryCode="night" value="night" >Night</mwc-list-item>
+                            <mwc-list-item data-countryCode="month" value="month" >Month</mwc-list-item>
+                            <mwc-list-item data-countryCode="year" value="year" >year</mwc-list-item>
+                            <mwc-list-item data-countryCode="bunch" value="bunch" >Bunch</mwc-list-item>
+                            <mwc-list-item data-countryCode="bundle" value="bundle" >Bundle</mwc-list-item>
+                            <mwc-list-item data-countryCode="package" value="package" >Package</mwc-list-item>
+                            <mwc-list-item data-countryCode="packet" value="packet" >Packet</mwc-list-item>
+                            <mwc-list-item data-countryCode="box" value="box" >Box</mwc-list-item>
+                            <mwc-list-item data-countryCode="dozen" value="dozen" >Dozen</mwc-list-item>
+                            <mwc-list-item data-countryCode="pair" value="pair">Pair</mwc-list-item>
+                            <mwc-list-item data-countryCode="ton" value="ton">Ton</mwc-list-item>
+                            <mwc-list-item data-countryCode="inch" value="inch">Inch</mwc-list-item>
+                        </mwc-select>
+                    </div>
+
+                </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="mb-3" id="productimages">
+            <div class="card card-raised">
+                <div class="card-header card-collapsible"><div class="my-1">Product Images</div></div>
+                <div class="card-body">
+
+                    <div class="text-center py-5">
+                        <!-- Profile picture image-->
+                        <!-- <img class="img-fluid rounded-circle mb-1" src="https://source.unsplash.com/jSUsJWvnnEA/500x500" alt="..." style="max-width: 150px; max-height: 150px"> -->
+
+                        <div class="file-image-upload product-theme-aspect-ratio mb-5"><svg style="background: #eee; padding: 38px; width: 116px; height: 116px; border-radius: 50px;" xmlns="http://www.w3.org/2000/svg" width="42" height="35" fill="none" viewBox="0 0 42 35"><g clip-path="url(#clip9)"><path stroke="#D9D9D9" stroke-width="1.2" d="M67.667-38.5h-93.334C-30.82-38.5-35-34.321-35-29.167v93.334c0 5.154 4.179 9.333 9.333 9.333h93.334C72.82 73.5 77 69.321 77 64.167v-93.334c0-5.154-4.179-9.333-9.333-9.333z"></path><path fill="#4D4D4D" d="M15.909 1.07l-.18.012c-.356.05-.677.249-.879.55l-3.019 4.493H5.727c-2.577 0-4.666 2.075-4.666 4.634v18.537c0 2.56 2.089 4.635 4.666 4.635h30.546c2.577 0 4.666-2.075 4.666-4.635V10.76l-.008-.282c-.147-2.428-2.176-4.352-4.658-4.352h-6.106L27.15 1.632c-.236-.351-.634-.563-1.06-.563H15.91zm.68 2.527h8.82l3.017 4.493c.236.352.633.563 1.059.563h6.788c1.171 0 2.12.943 2.12 2.106v18.537c0 1.164-.949 2.107-2.12 2.107H5.727c-1.171 0-2.121-.943-2.121-2.107V10.76c0-1.163.95-2.106 2.121-2.106h6.788l.18-.013c.356-.05.677-.249.88-.55l3.015-4.493z"></path><path fill="#4D4D4D" d="M21 11.18c-4.452 0-8.06 3.584-8.06 8.005 0 4.421 3.608 8.005 8.06 8.005s8.06-3.584 8.06-8.005c0-4.42-3.608-8.004-8.06-8.004zm0 2.528c3.046 0 5.515 2.452 5.515 5.477 0 3.025-2.47 5.477-5.515 5.477-3.046 0-5.515-2.452-5.515-5.477 0-3.024 2.469-5.477 5.515-5.477z"></path></g><defs><clipPath id="clip9"><path fill="#fff" d="M0 0H42V35H0z"></path></clipPath></defs></svg></div>
+
+                        <!-- Profile picture help block-->
+                        <div class="caption fst-italic text-muted mb-4">JPG, JPEG, PNG only allowed with no larger than 5 MB</div>
+                        <!-- Profile picture upload button-->
+                        <button class="btn btn-primary mdc-ripple-upgraded" type="button" style="--mdc-ripple-fg-size:125px; --mdc-ripple-fg-scale:1.77899; --mdc-ripple-fg-translate-start:71.925px, -57.8999px; --mdc-ripple-fg-translate-end:42.15px, -44.5px;">
+                            Upload new image
+                            <i class="material-icons trailing-icon">upload</i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-3" id="invento">
+            <div class="card card-raised card-collapsible" id="inventory_">
+                <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#inventorys" aria-expanded="true" aria-controls="cardCollapsibleContent">Inventory<i class="material-icons card-header-icon">expand_less</i></div>
+                <div class="card-body collapse" id="inventorys" data-bs-parent="#inventory_">
+
+                <div class="row">
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="Quanitity" outlined="" icontrailing="" placeholder="Example 10"></mwc-textfield>
+                    </div>
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="SKU ID" outlined="" icontrailing="" placeholder="Example 01000000XX"></mwc-textfield>
+                    </div>
+
+                </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="mb-3" id="shippingtax">
+        <div class="card card-raised card-collapsible" id="shippingtax_">
+        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#shippingtax__" aria-expanded="true" aria-controls="cardCollapsibleContent">Shipping & Tax<i class="material-icons card-header-icon">expand_less</i></div>
+        <div class="card-body collapse" id="shippingtax__" data-bs-parent="#shippingtax_">
+
+                <div class="row">
+
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="Product Weight" outlined="" icontrailing="" placeholder="Example 12"></mwc-textfield>
+                    </div>
+                    <div class="col-6">
+                        <mwc-select outlined label="Product Unit Type" class="mb-4 product_category w-100">
+                            <mwc-list-item data-countryCode="km" value="km" selected>KM</mwc-list-item>
+                            <mwc-list-item data-countryCode="gm" value="gm">GM</mwc-list-item>
+                        </mwc-select>
+                    </div>
+
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="HSN/Product Code" outlined="" icontrailing="" placeholder="Enter the HSN/Product Code"></mwc-textfield>
+                    </div>
+
+                    <div class="col-6">
+                        <mwc-textfield class="w-100 mb-4" label="Tax" outlined="" icontrailing="" placeholder="Enter the tax percentage"></mwc-textfield>
+                    </div>
+
+                </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-3" id="veriants">
+            <div class="card card-raised card-collapsible" id="veriants_">
+            <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#veriants__" aria-expanded="true" aria-controls="cardCollapsibleContent">Veriants<i class="material-icons card-header-icon">expand_less</i></div>
+            <div class="card-body collapse" id="veriants__" data-bs-parent="#veriants_">
+
+                    <div class="row">
+
+                        <div class="col-6">
+                            <mwc-textfield class="w-100 mb-4" label="Product Weight" outlined="" icontrailing="" placeholder="Example 12"></mwc-textfield>
+                        </div>
+                        <div class="col-6">
+                            <mwc-select outlined label="Product Unit Type" class="mb-4 product_category w-100">
+                                <mwc-list-item data-countryCode="km" value="km" selected>KM</mwc-list-item>
+                                <mwc-list-item data-countryCode="gm" value="gm">GM</mwc-list-item>
+                            </mwc-select>
+                        </div>
+
+                        <div class="col-6">
+                            <mwc-textfield class="w-100 mb-4" label="HSN/Product Code" outlined="" icontrailing="" placeholder="Enter the HSN/Product Code"></mwc-textfield>
+                        </div>
+
+                        <div class="col-6">
+                            <mwc-textfield class="w-100 mb-4" label="Tax" outlined="" icontrailing="" placeholder="Enter the tax percentage"></mwc-textfield>
+                        </div>
+
+                    </div>
+                    </div>
+
+                </div>
+            </section>
+
+    </div>
+
+    <div class="col-lg-2 mb-5">
+
+        <div id="list-example" class="sticky-top nav-stick">
+            <div class="nav-heading">Contents</div>
+            <ul class="nav flex-column" id="navStick">
+                <li class="nav-item"><a class="nav-link" href="#productinformation">Product Information</a></li>
+                <li class="nav-item"><a class="nav-link" href="#productprices">Product prices</a></li>
+                <li class="nav-item"><a class="nav-link" href="#productimages">Product Images</a></li>
+                <li class="nav-item"><a class="nav-link" href="#invento">Inventory</a></li>
+                <li class="nav-item"><a class="nav-link" href="#shippingtax">Shopping & Tax</a></li>
+                <li class="nav-item"><a class="nav-link" href="#related">Variants</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
