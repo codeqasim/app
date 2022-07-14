@@ -1,17 +1,27 @@
 <div class="row" ng-controller="ProductsAddController" data-bs-spy="scroll" data-bs-target="#list-example">
 
+
+    <div class="container-fluid mt-4 row" ng-controller="ContactController">
+
+        <div class="col-3"></div>
+
+        <div class="col-6">
+        <div class="data-form vh100 p-0 float-right" style="background:transparent;height:auto !important">
+
     <script> var scrollSpy = new bootstrap.ScrollSpy(document.body, { target: '#list-example' }); </script>
 
-    <div class="col-lg-9">
-         <section class="mb-3 mt-3" id="productinformation">
+    <div class="col-lg-12">
+         <section class="mb-3 mt-0" id="productinformation">
             <div class="card card-raised">
                 <div class="card-header card-collapsible"><div class="my-1">Product Information</div></div>
                 <div class="card-body">
 
                 <mwc-textfield class="w-100 mb-4" label="Product Name" outlined="" icontrailing="" placeholder="Enter the complete product name"></mwc-textfield>
 
-                <mwc-select outlined label="Product Category" class="mb-4 product_category w-100">
-                    <mwc-list-item data-countryCode="" value=""></mwc-list-item>
+                <mwc-select outlined label="" class="mb-4 product_category w-100">
+                    <mwc-list-item data-countryCode="" value="">Fruits</mwc-list-item>
+                    <mwc-list-item data-countryCode="" value="">Woods</mwc-list-item>
+                    <mwc-list-item data-countryCode="" value="">Tables</mwc-list-item>
                 </mwc-select>
 
                 <mwc-textarea class="w-100" label="Product Description" outlined="" icontrailing="" placeholder="Enter the complete product description"></mwc-textarea>
@@ -25,11 +35,18 @@
                 <div class="card-body">
 
                 <div class="row">
-                    <div class="col-6">
-                        <mwc-textfield class="w-100 mb-4" label="Price" outlined="" icontrailing="" placeholder="Enter the product price value"></mwc-textfield>
+
+                    <div class="col-3">
+                        <mwc-select outlined label="Currency" class="mb-4 w-100">
+                            <mwc-list-item data-countryCode="rs" value="rs" selected>Rs</mwc-list-item>
+                         </mwc-select>
+                    </div>
+
+                    <div class="col-3">
+                        <mwc-textfield class="w-100 mb-4" label="Price" outlined="" icontrailing="" placeholder="Enter price value"></mwc-textfield>
                     </div>
                     <div class="col-6">
-                        <mwc-textfield class="w-100 mb-4" label="Discount Price" outlined="" icontrailing="" placeholder="Enter the product discount price value"></mwc-textfield>
+                        <mwc-textfield class="w-100 mb-4" label="Discount Price" outlined="" icontrailing="" placeholder="Enter discount price value"></mwc-textfield>
                     </div>
 
                     <div class="col-6">
@@ -96,11 +113,10 @@
             </div>
         </section>
 
-
         <section class="mb-3" id="invento">
             <div class="card card-raised card-collapsible" id="inventory_">
-                <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#inventorys" aria-expanded="true" aria-controls="cardCollapsibleContent">Inventory<i class="material-icons card-header-icon">expand_less</i></div>
-                <div class="card-body collapse" id="inventorys" data-bs-parent="#inventory_">
+                <div class="card-header" data-bs-toggle="collapse" data-bs-target="#inventorys" aria-expanded="true" aria-controls="cardCollapsibleContent">Inventory<i class="material-icons card-header-icon">expand_less</i></div>
+                <div class="card-body collapse show" id="inventorys" data-bs-parent="#inventory_">
 
                 <div class="row">
                     <div class="col-6">
@@ -119,8 +135,8 @@
 
         <section class="mb-3" id="shippingtax">
         <div class="card card-raised card-collapsible" id="shippingtax_">
-        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#shippingtax__" aria-expanded="true" aria-controls="cardCollapsibleContent">Shipping & Tax<i class="material-icons card-header-icon">expand_less</i></div>
-        <div class="card-body collapse" id="shippingtax__" data-bs-parent="#shippingtax_">
+        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#shippingtax__" aria-expanded="true" aria-controls="cardCollapsibleContent">Shipping & Tax<i class="material-icons card-header-icon">expand_less</i></div>
+        <div class="card-body collapse show" id="shippingtax__" data-bs-parent="#shippingtax_">
 
                 <div class="row">
 
@@ -139,7 +155,7 @@
                     </div>
 
                     <div class="col-6">
-                        <mwc-textfield class="w-100 mb-4" label="Tax" outlined="" icontrailing="" placeholder="Enter the tax percentage"></mwc-textfield>
+                        <mwc-textfield class="w-100 mb-4" label="Tax %" outlined="" icontrailing="" placeholder="Enter the tax percentage"></mwc-textfield>
                     </div>
 
                 </div>
@@ -150,28 +166,47 @@
 
         <section class="mb-3" id="veriants">
             <div class="card card-raised card-collapsible" id="veriants_">
-            <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#veriants__" aria-expanded="true" aria-controls="cardCollapsibleContent">Veriants<i class="material-icons card-header-icon">expand_less</i></div>
-            <div class="card-body collapse" id="veriants__" data-bs-parent="#veriants_">
+            <div class="card-header" data-bs-toggle="collapse" data-bs-target="#veriants__" aria-expanded="true" aria-controls="cardCollapsibleContent">Veriants<i class="material-icons card-header-icon">expand_less</i></div>
+            <div class="card-body collapse show" id="veriants__" data-bs-parent="#veriants_">
 
                     <div class="row">
 
-                        <div class="col-6">
-                            <mwc-textfield class="w-100 mb-4" label="Product Weight" outlined="" icontrailing="" placeholder="Example 12"></mwc-textfield>
-                        </div>
-                        <div class="col-6">
-                            <mwc-select outlined label="Product Unit Type" class="mb-4 product_category w-100">
-                                <mwc-list-item data-countryCode="km" value="km" selected>KM</mwc-list-item>
-                                <mwc-list-item data-countryCode="gm" value="gm">GM</mwc-list-item>
-                            </mwc-select>
+                        <div class="col-4">
+                            <mwc-select outlined label="Color" class="mb-4 product_category w-100">
+                                <mwc-list-item data-countryCode="black" value="black" selected>Black</mwc-list-item>
+                                <mwc-list-item data-countryCode="white" value="white">White</mwc-list-item>
+                                <mwc-list-item data-countryCode="green" value="green">Green</mwc-list-item>
+                                <mwc-list-item data-countryCode="blue" value="blue">Blue</mwc-list-item>
+                                <mwc-list-item data-countryCode="brown" value="brown">Brown</mwc-list-item>
+                                <mwc-list-item data-countryCode="red" value="red">Red</mwc-list-item>
+                                <mwc-list-item data-countryCode="silver" value="silver">Silver</mwc-list-item>
+                                <mwc-list-item data-countryCode="orange" value="orange">Orange</mwc-list-item>
+                                <mwc-list-item data-countryCode="orange" value="orange">Orange</mwc-list-item>
+                             </mwc-select>
                         </div>
 
-                        <div class="col-6">
-                            <mwc-textfield class="w-100 mb-4" label="HSN/Product Code" outlined="" icontrailing="" placeholder="Enter the HSN/Product Code"></mwc-textfield>
+                        <div class="col-4">
+                            <mwc-select outlined label="Size" class="mb-4 product_category w-100">
+                                <mwc-list-item data-countryCode="small" value="small" selected>Small</mwc-list-item>
+                                <mwc-list-item data-countryCode="medium" value="medium" selected>Medium</mwc-list-item>
+                                <mwc-list-item data-countryCode="large" value="large" selected>Large</mwc-list-item>
+                                <mwc-list-item data-countryCode="extralarge" value="extralarge" selected>Exta Large</mwc-list-item>
+                             </mwc-select>
                         </div>
 
-                        <div class="col-6">
-                            <mwc-textfield class="w-100 mb-4" label="Tax" outlined="" icontrailing="" placeholder="Enter the tax percentage"></mwc-textfield>
+                        <div class="col-4">
+                             <button class="btn btn-dark btn-block">
+                                Add Veriant
+                                <i class="material-icons trailing-icon">add</i>
+                             </button>
                         </div>
+
+
+                        <div class="col-6">
+
+                        </div>
+
+
 
                     </div>
                     </div>
@@ -179,11 +214,20 @@
                 </div>
             </section>
 
+
+
+
+
+
+
+
     </div>
+</div>
+</div>
 
-    <div class="col-lg-2 mb-5">
+    <div class="col-2 mb-5">
 
-        <div id="list-example" class="sticky-top nav-stick">
+        <div id="list-example" class="sticky-top nav-stick" style="top:5rem">
             <div class="nav-heading">Contents</div>
             <ul class="nav flex-column" id="navStick">
                 <li class="nav-item"><a class="nav-link" href="#productinformation">Product Information</a></li>
@@ -196,4 +240,17 @@
         </div>
     </div>
 
+
+<div class="data-footer">
+    <div class="data-footer-border">
+        <a href="./products" class="btn btn-outline-dark btn-md w100 btnCancel d-flex justify-content-center">Cancel</a>
+        <button type="submit" class="btn btn-md btn-dark d-flex justify-content-center w100 blue saveBtn">Save</submit>
+    </div>
 </div>
+
+</div>
+</div>
+
+</div>
+
+

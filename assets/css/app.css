@@ -26831,3 +26831,5 @@ body { background-color: rgb(239, 239, 244); }
 .dataTable-selector { padding: 6px 18px !important; width: 80px; text-align: left; }
 .dataTable-top { padding: 0 0 12px !important; }
 .nav-fixed #layoutDrawer #layoutDrawer_content { padding-left: 279px; top: 4rem; }
+.card-header { background-color: rgb(223 228 241); }
+

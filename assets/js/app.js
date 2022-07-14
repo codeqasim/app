@@ -195,7 +195,7 @@ templateUrl: './app/components/products/products.html',
 
 // PRODUCTS ADD PAGE
 when('/products-add', {
-templateUrl: './app/components/products/products-add.html',
+templateUrl: './app/components/products/product.html',
   data: {
       meta: {
         'title': 'Add Product',
