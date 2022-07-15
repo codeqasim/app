@@ -7,7 +7,7 @@
 $router->post('login', function() {
     include "db.php";
 
-    file_put_contents("post.log", print_r($_POST, true));
+    // file_put_contents("post.log", print_r($_POST, true));
 
     // if(isset($_REQUEST['email']) && trim($_POST['email']) !== "") {} else { echo "email - param or value missing "; die; }
     // if(isset($_REQUEST['password']) && trim($_POST['password']) !== "") {} else { echo "password - param or value missing "; die; }

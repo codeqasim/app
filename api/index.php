@@ -43,6 +43,7 @@ $router->get('/', function() {
 
 // CREATE DYNAMIC CONTROLLERS FROM FILES
 include "controllers/users.php";
+include "controllers/products.php";
 include "mail.php";
 
 // ======================== GET BOOKING BY ID

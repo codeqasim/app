@@ -204,6 +204,16 @@ templateUrl: './app/components/products/product.html',
     }
 }).
 
+when('/product/:id', {
+  templateUrl: './app/components/products/product.html',
+    data: {
+        meta: {
+          'title': 'Add Product',
+          'description': 'Add Product'
+        }
+      }
+  }).
+
 // Logout PAGE
 when('/logout', {
   templateUrl: './app/components/account/logout.html',

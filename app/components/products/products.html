@@ -60,9 +60,9 @@
                       </th>
                       <th>Status</th>
                       <th>Name</th>
-                      <th>Email</th>
-                      <th>Mobile</th>
-                      <th>Country Code</th>
+                      <th>Brand</th>
+                      <th>Category</th>
+                      <th>Inventory</th>
                       <th>Action</th>
                    </tr>
                 </thead>
@@ -81,16 +81,16 @@
                             <label class="form-check-label" for="checked"></label>
                          </div>
                          <script>
-                            if($("#checked").is(':checked')) console.log("Checked");
-                            else console.log("Not Checked");
+                           //  if($("#checked").is(':checked')) console.log("Checked");
+                           //  else console.log("Not Checked");
                          </script>
                       </td>
-                      <td><a href="./contacts/{{i.user_id}}">{{i.first_name}} {{i.last_name}}</a></td>
+                      <td><a href="./product/{{i.product_id}}">{{i.product_name}}</a></td>
                       <td>{{i.email}}</td>
                       <td>{{i.mobile}}</td>
                       <td>{{i.country_code}}</td>
                       <td class="d-flex justify-content-center gap-3 btn-table-action">
-                         <a href="./contacts/{{i.user_id}}" class="btn btn-dark btn-sm gap-2 d-flex align-items-center p-2 pe-4 justify-content-center btn-block">
+                         <a href="./product/{{i.product_id}}" class="btn btn-dark btn-sm gap-2 d-flex align-items-center p-2 pe-4 justify-content-center btn-block">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
                                <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>

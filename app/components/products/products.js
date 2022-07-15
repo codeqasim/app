@@ -13,7 +13,6 @@ app.controller('ProductsController', ['$http','$scope','$routeParams','$location
 
     }, 300);
 
-
     // REDIRECT BACK TO CONTACTS PAGE
     $(".search").on('click', function(event){
         var searchBy = ($('.search_by').val())
@@ -99,7 +98,7 @@ app.controller('ProductsController', ['$http','$scope','$routeParams','$location
     })
 
     var data = $.param({
-        owner_id: user_id
+        user_id: user_id
     });
 
     $http.post(endpoint+"products", data, ContentConfig)
@@ -107,7 +106,7 @@ app.controller('ProductsController', ['$http','$scope','$routeParams','$location
    function(res){
 
      // SUCCESS CALLBACK
-    //  console.log(res.data.data)
+     console.log(res.data)
      $scope.items = res.data.data;
      if (res.data.data == null) {
         $('.contacts').hide()
@@ -154,19 +153,34 @@ $scope.selectInfo=function(id){
 }])
 
 // CONTACTS CONTROLLER
-app.controller('ProductsAddController', ['$http','$scope','$routeParams','$location',function ($http,$scope) {
+app.controller('ProductController', ['$http','$scope','$routeParams','$location',function ($http,$scope,$routeParams) {
 
+    var currentId = $routeParams.id;
     let user_id = get('user_id');
 
-    // setTimeout(function() {
+    var data = $.param({ product_id : currentId });
+    $http.post(endpoint+"product", data, ContentConfig).then(
+        function(res){
+        console.log(res.data.data)
 
-    //     $('.foot').append("<script src='./assets/js/bootstrap.bundle.min.js' crossorigin='anonymous'></script>");
-    //     $('.foot').append("<script type='module' src='./assets/js/material.js'></script>");
-    //     $('.foot').append("<script src='./assets/js/scripts.js'></script>");
-    //     $('.foot').append("<script src='./assets/js/sb-customizer.js'></script>");
-    //     $('.foot').append("<sb-customizer project='material-admin-pro'></sb-customizer>");
+        // $scope.items = res.data;
 
-    //  }, 500);
+        if (res.data == null) { } else {
 
+            $('.product_name').val(res.data.data[0].product_name)
+            $('.product_desc').val(res.data.data[0].product_desc)
+
+            // $('.product_desc').val(res.data.data[0].product_desc)
+            // $('.last_name').val(res.data.data[0].last_name)
+            // $('.email').val(res.data.data[0].email)
+            // $('.mobile').val(res.data.data[0].mobile)
+            // $('.country_code').val(res.data.data[0].country_code)
+
+        }
+
+    });
+
+    // $scope.product_name = "New Product";
+    // console.log($scope.product_names);
 
 }])
