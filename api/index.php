@@ -8,13 +8,11 @@ header('Access-Control-Allow-Origin: *');
 
 include "vendor/autoload.php";
 
+file_put_contents("request.log", print_r($_REQUEST, true));
+
 // AUTOLOADER
 use Mailgun\Mailgun;
 use Medoo\Medoo;
-
-// SENTRY DEBUG
-// \Sentry\init(['dsn' => 'https://e5b08d1efc514d05aa7a25230b224404@o1024531.ingest.sentry.io/6070560' ]);
-// throw new Exception("My first Sentry error!");
 
 error_reporting(E_ALL); // error reporting (debug)
 session_start();
@@ -37,8 +35,17 @@ $router = new Router(function ($method, $path, $statusCode, $exception) { http_r
 
 // ======================== INDEX
 $router->get('/', function() {
-    $respose = array ( "status"=>"true", "message"=>"welcome to API server" );
-    echo json_encode($respose);
+
+    include "db.php";
+    $db = $db->select("users","*");
+
+    if (!empty($db)){
+        $resp = array ( "status"=>"true", "message"=>"db connected and ready" );
+    } else {
+        $resp = array ( "status"=>"true", "message"=>"check db connection" );
+    }
+
+    echo json_encode($resp);
 });
 
 // CREATE DYNAMIC CONTROLLERS FROM FILES

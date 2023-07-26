@@ -27,14 +27,17 @@ app.controller('LoginController', ['$http','$scope',function ($http,$scope) {
           console.log(res.data);
           if(res.status == 'true'){
 
-            var user_id = res.data.user_id;
+            var user_id = res.data[0].user_id;
 
-            // alert(response.data.id)
-            sessionStorage.setItem('user_id', user_id);
+            // console.log(res.data[0].user_id);
+            set('user_id',user_id)
+            // sessionStorage.setItem('user_id', user_id);
 
             // alert(sessionStorage.getItem('user_id'));
             // REDIRECT ON SUCCESSFUL SIGNUP
-            window.location.href = "./dashboard";
+            // window.location.href = "./dashboard";
+
+            redirect("./dashboard");
 
             } else { // LOGIN ERROR
                alert(res);

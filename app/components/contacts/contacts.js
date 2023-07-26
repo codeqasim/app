@@ -3,18 +3,18 @@ app.controller('ContactsController', ['$http','$scope','$routeParams','$location
 
         let user_id = get('user_id');
 
-        $('head').append("<script src='https://cdn.jsdelivr.net/npm/simple-datatables@latest' crossorigin='anonymous'></script>");
-        $('head').append("<link href='https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' rel='stylesheet' />");
+        // $('head').append("<script src='https://cdn.jsdelivr.net/npm/simple-datatables@latest' crossorigin='anonymous'></script>");
+        // $('head').append("<link href='https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css' rel='stylesheet' />");
 
-        setTimeout(function() {
+        // setTimeout(function() {
 
-            const dataTable = new simpleDatatables.DataTable("#table", {
-                // searchable: true,
-                // fixedHeight: true,
+        //     const dataTable = new simpleDatatables.DataTable("#table", {
+        //         // searchable: true,
+        //         // fixedHeight: true,
 
-            })
+        //     })
 
-        }, 300);
+        // }, 300);
 
 
         // REDIRECT BACK TO CONTACTS PAGE

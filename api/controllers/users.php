@@ -1,104 +1,93 @@
 <?php
 
 // ======================== LOGIN
-
-// $router->post('logins', function() {});
-
 $router->post('login', function() {
+
     include "db.php";
 
-    // file_put_contents("post.log", print_r($_POST, true));
+    required("email");
+    required("password");
 
-    // if(isset($_REQUEST['email']) && trim($_POST['email']) !== "") {} else { echo "email - param or value missing "; die; }
-    // if(isset($_REQUEST['password']) && trim($_POST['password']) !== "") {} else { echo "password - param or value missing "; die; }
-
-    // mobile and Password sent from form
+    // POST QUERY
     $email = $_POST['email'];
-    $password = $_POST['password']; // 426868
+    $password = md5($_POST['password']);
 
-        $password = md5($password);
-        $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-        $query = mysqli_query($mysqli, $sql);
-        $res=mysqli_num_rows($query);
+    // DB QUERY
+    $user_info = $db->select("users","*", [
+        "email" => $email,
+        "password" => $password,
+    ]);
 
-            if($res == 1) {
+    if (!empty($user_info)){
+        $respose = array ( "status"=>"true", "message"=>"user details", "data"=> $user_info );
+    } else {
+        $respose = array ( "status"=>"false", "message"=>"no user found", "data"=> null );
+    }
 
-                $user_info = $mysqli->query('SELECT * FROM users WHERE email = "'.$email.'"')->fetch_object();
-                        $respose = array ( "status"=>"true", "message"=>"user details", "data"=> $user_info );
-                    echo json_encode($respose);
-                    } else {
-                        $respose = array ( "status"=>"false", "message"=>"no user found", "data"=> null );
-                    echo json_encode($respose);
-            }
+    echo json_encode($respose);
 
 });
 
 // ======================== SIGNUP
 $router->post('signup', function() {
-
-    file_put_contents("post.log", print_r($_POST, true));
-
+    
     include "db.php";
 
     // VALIDATION
-    if(isset($_POST['first_name']) && trim($_POST['first_name']) !== "") {} else { echo "first_name - param or value missing "; die; }
-    if(isset($_POST['last_name']) && trim($_POST['last_name']) !== "") {} else { echo "last_name - param or value missing "; die; }
-    if(isset($_POST['mobile']) && trim($_POST['mobile']) !== "") {} else { echo "mobile - param or value missing "; die; }
-    if(isset($_POST['email']) && trim($_POST['email']) !== "") {} else { echo "email - param or value missing "; die; }
+    required("first_name");
+    required("last_name");
+    required("email");
+    required("password");
 
-    if ($_SERVER['REQUEST_METHOD']=$_POST){
+    $mob = $new_str = str_replace(' ', '', $_POST['mobile']);
+    $mobile = preg_replace('/[^A-Za-z0-9\-]/', '', $mob); // removes special chars.
+    $mail_code = rand(100000, 999999);
+    $mobile_code = rand(100000, 999999);
 
-        $mob = $new_str = str_replace(' ', '', $_POST['mobile']);
-        $mobile = preg_replace('/[^A-Za-z0-9\-]/', '', $mob); // removes special chars.
-        $mail_code = rand(100000, 999999);
-        $mobile_code = rand(100000, 999999);
+    $rand = rand(100000000, 999999999);
+    $date = date('Ymdhis');
+    $ref_id = $date.$rand;
 
-        $rand = rand(100000000, 999999999);
-        $date = date('Ymdhis');
-        $ref_id = $date.$rand;
+    // EMAIL CHECK
+    $exist_mail = $db->select('users', [ 'email', ], [ 'email' => $_POST['email'], ]);
+    if (isset($exist_mail[0]['email'])) {
+    $respose = array ( "status"=>"false", "message"=>"email already exist please use new email", "data"=> "" );
+    echo json_encode($respose);
+    die;
+    }
 
-        // EMAIL CHECK
-        $exist_mail = $database->select('users', [ 'email', ], [ 'email' => $_POST['email'], ]);
-        if (isset($exist_mail[0]['email'])) {
-        $respose = array ( "status"=>"false", "message"=>"email already exist please use new email", "data"=> "" );
-        echo json_encode($respose);
-        die;
-        }
+    if(isset($_POST['user_id'])) { $user_id = $_POST['user_id']; } else { $user_id = ""; }
+    if(isset($_POST['password'])) { $password = $_POST['password']; } else { $password = 00000000; }
+    if(isset($_POST['country_code'])) { $country_code = $_POST['country_code']; } else { $country_code = ""; }
+    if(isset($_POST['owner_id'])) { $owner_id = $_POST['owner_id']; } else { $owner_id = ""; }
+    
+    // DB QUERY
+    $db->insert("users", [
+        "owner_id" => $owner_id,
+        "user_id" => $ref_id,
+        "first_name" => $_POST['first_name'],
+        "last_name" => $_POST['last_name'],
+        "email" => $_POST['email'],
+        "mobile" => $_POST['mobile'],
+        "country_code" => $_POST['country_code'],
+        "email_code" => $mail_code,
+        "password" => md5($password)
+    ]);
 
-        if(isset($_POST['user_id'])) { $user_id = $_POST['user_id']; } else { $user_id = ""; }
-        if(isset($_POST['password'])) { $password = $_POST['password']; } else { $password = 00000000; }
-        if(isset($_POST['country_code'])) { $country_code = $_POST['country_code']; } else { $country_code = ""; }
-        if(isset($_POST['owner_id'])) { $owner_id = $_POST['owner_id']; } else { $owner_id = ""; }
+    $user_info = $db->select("users","*", [
+        "id" => $db->id()
+    ]);
 
-        $database->insert("users", [
-            "owner_id" => $owner_id,
-            "user_id" => $ref_id,
-            "first_name" => $_POST['first_name'],
-            "last_name" => $_POST['last_name'],
-            "email" => $_POST['email'],
-            "mobile" => $_POST['mobile'],
-            "country_code" => $_POST['country_code'],
-            "email_code" => $mail_code,
-            "password" => md5($password)
-        ]);
+    $respose = array ( "status"=>"true", "message"=>"account registered successfully.", "data"=> $user_info );
+    echo json_encode($respose);
 
-        $user_info = $mysqli->query('SELECT * FROM users WHERE id = "'.$database->id().'"')->fetch_object();
-
-        $respose = array ( "status"=>"true", "message"=>"account registered successfully.", "data"=> $user_info );
-        echo json_encode($respose);
-
-        }
 });
 
 // ======================== EMAIL VERIFICATION
-
 $router->post('account/verify_email', function() {
 
     include "db.php";
-
     if(isset($_POST['mobile']) && trim($_POST['mobile']) !== "") {} else { echo "mobile - param or value missing "; die; }
-
-    // echo $_POST['mobile'] . $_POST['email_code'];
 
     $mobile = mysqli_real_escape_string($mysqli, $_POST['mobile']);
     $i = $mysqli->query("SELECT * FROM `users` WHERE `mobile` = '".$mobile."'")->fetch_object();
@@ -112,8 +101,6 @@ $router->post('account/verify_email', function() {
         echo json_encode($respose);
         die;
     }
-
-    // dd(json_encode($i));
 
     $respose = array ( "status"=>"true", "message"=>"email verified.", "data"=> $x, );
     echo json_encode($respose);
@@ -266,7 +253,7 @@ $router->post('user_profile', function() {
 $router->post('delete-user', function() {
 
     include "db.php";
-    $data = $database->delete('users', [
+    $data = $db->delete('users', [
         "AND" => [
         'user_id' => $_POST['user_id'],
         ]
@@ -289,7 +276,7 @@ $router->post('contacts', function() {
     if (isset($_POST['user_id'])) {
         $id = $_POST['user_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -306,7 +293,7 @@ $router->post('contacts', function() {
     if (isset($_POST['owner_id'])) {
         $id = $_POST['owner_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -323,7 +310,7 @@ $router->post('contacts', function() {
     if (isset($_POST['user_id'])) {
         $user_id = $_POST['user_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -341,7 +328,7 @@ $router->post('contacts', function() {
         $email = $_POST['email'];
         $owner_id = $_POST['owner_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -360,7 +347,7 @@ $router->post('contacts', function() {
         $first_name = $_POST['first_name'];
         $owner_id = $_POST['owner_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -379,7 +366,7 @@ $router->post('contacts', function() {
         $last_name = $_POST['last_name'];
         $owner_id = $_POST['owner_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -398,7 +385,7 @@ $router->post('contacts', function() {
         $mobile = $_POST['mobile'];
         $owner_id = $_POST['owner_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',
@@ -417,7 +404,7 @@ $router->post('contacts', function() {
         $country_code = $_POST['country_code'];
         $owner_id = $_POST['owner_id'];
 
-        $data = $database->select('users', [
+        $data = $db->select('users', [
             'id',
             'user_id',
             'first_name',

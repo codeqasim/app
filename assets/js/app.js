@@ -3,7 +3,7 @@ var app = angular.module('app', ['ngRoute','ngMeta','ngAnimate']);
 
 let qas = "sim";
 
-// ======================================== MAILE FUNCTION
+// ======================================== MAIL FUNCTION
 function mailer(email,password) {
 
 $.ajax({
@@ -20,7 +20,7 @@ $.ajax({
     'text_body': "Your account is ready and rememeber your " + password
     }),
 })}
-// ======================================== MALE FUNCTION
+// ======================================== MAIL FUNCTION
 
 // FUNCTIONS
 function get(item){
@@ -356,6 +356,9 @@ app.controller('dashboard', ['$http','$scope',function ($http,$scope) {
 
 
   $scope.user_id = sessionStorage.getItem('user_id');
+
+  // let = uid = sessionStorage.getItem('user_id');
+  // alert(uid);
 
   $scope.load = function() {
 
